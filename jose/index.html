@@ -5,1061 +5,1382 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snow Print | Brindes Personalizados Premium em Barueri</title>
     <meta name="description" content="A Snow Print oferece os melhores brindes personalizados em Barueri. Qualidade premium para empresas e eventos. Peça seu orçamento agora pelo WhatsApp!">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,300&family=Syne:wght@700;800&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+        /* =========================================
+           RESET & VARIÁVEIS
+        ========================================= */
         :root {
-            --primary: #0a0a0a;
-            --secondary: #2563eb;
-            --accent: #6366f1;
-            --accent-warm: #f59e0b;
-            --success: #22c55e;
-            --text-dark: #0f172a;
-            --text-mid: #475569;
-            --text-light: #94a3b8;
-            --bg-light: #f8fafc;
-            --bg-subtle: #f1f5f9;
+            --ink: #05050a;
+            --ink-2: #0f0f1a;
+            --blue: #2563eb;
+            --blue-light: #3b82f6;
+            --violet: #7c3aed;
+            --green: #22c55e;
+            --amber: #f59e0b;
+            --text: #0f172a;
+            --text-2: #334155;
+            --text-3: #64748b;
+            --text-4: #94a3b8;
+            --surface: #f8fafc;
+            --surface-2: #f1f5f9;
+            --border: rgba(15,23,42,0.08);
             --white: #ffffff;
-            --border: #e2e8f0;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --transition-fast: all 0.2s ease;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+            --ease-out: cubic-bezier(0.0, 0, 0.2, 1);
         }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Inter', sans-serif;
-        }
-        html {
-            scroll-behavior: smooth;
-        }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; font-size: 16px; }
         body {
-            color: var(--text-dark);
-            line-height: 1.6;
-            background-color: var(--white);
+            font-family: 'Inter', system-ui, sans-serif;
+            color: var(--text);
+            background: var(--white);
             overflow-x: hidden;
+            line-height: 1.6;
         }
-        h1, h2, h3, .logo-text {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-        }
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-        ul {
-            list-style: none;
-        }
-        section {
-            padding: 120px 5%;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { display: block; max-width: 100%; }
 
-        /* ANIMAÇÕES DE ENTRADA */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* BOTÕES */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 16px 36px;
-            border-radius: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            text-align: center;
-            border: none;
-            font-size: 0.95rem;
-            gap: 10px;
-            letter-spacing: 0.3px;
-        }
-        .btn-primary {
-            background-color: var(--secondary);
-            color: var(--white);
-            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25);
-        }
-        .btn-primary:hover {
-            background-color: #1d4ed8;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.35);
-        }
-        .btn-whatsapp {
-            background-color: #25d366;
-            color: white;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.25);
-        }
-        .btn-whatsapp:hover {
-            background-color: #1fb855;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.35);
-        }
-        .btn-outline {
-            background: transparent;
-            color: var(--white);
-            border: 2px solid rgba(255,255,255,0.3);
-        }
-        .btn-outline:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.6);
-        }
-
-        /* HEADER */
-        header {
+        /* =========================================
+           CURSOR GLOW
+        ========================================= */
+        .cursor-glow {
+            pointer-events: none;
             position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            padding: 12px 5%;
-            transition: var(--transition-fast);
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(37,99,235,0.06) 0%, transparent 70%);
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            transition: opacity 0.3s ease;
+            will-change: transform;
         }
-        header.scrolled {
-            padding: 8px 5%;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 1px 30px rgba(0,0,0,0.08);
+
+        /* =========================================
+           SCROLL ANIMATIONS
+        ========================================= */
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(32px);
+            transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+        }
+        [data-reveal="left"]  { transform: translateX(-32px); }
+        [data-reveal="right"] { transform: translateX(32px); }
+        [data-reveal="scale"] { transform: scale(0.95); }
+        [data-reveal].is-visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* =========================================
+           HEADER
+        ========================================= */
+        #header {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1160px;
+            z-index: 1000;
+            border-radius: 20px;
+            background: rgba(255,255,255,0.75);
+            backdrop-filter: blur(24px) saturate(180%);
+            -webkit-backdrop-filter: blur(24px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.6);
+            box-shadow: 0 4px 32px rgba(0,0,0,0.06), 0 1px 0 rgba(255,255,255,0.8) inset;
+            transition: all 0.4s var(--ease);
+            padding: 10px 24px;
+        }
+        #header.scrolled {
+            background: rgba(255,255,255,0.92);
+            box-shadow: 0 8px 40px rgba(0,0,0,0.1);
         }
         nav {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
+            justify-content: space-between;
+            gap: 16px;
         }
-        .logo-img {
-            height: 55px;
-            width: auto;
-            transition: var(--transition-fast);
-        }
-        header.scrolled .logo-img {
-            height: 45px;
-        }
+        .logo-img { height: 50px; width: auto; }
         .nav-links {
             display: flex;
-            gap: 8px;
             align-items: center;
+            gap: 4px;
         }
         .nav-links a {
-            font-size: 0.9rem;
+            font-size: 0.875rem;
             font-weight: 500;
-            color: var(--text-mid);
-            transition: var(--transition-fast);
-            padding: 8px 16px;
-            border-radius: 10px;
-        }
-        .nav-links a:hover {
-            color: var(--text-dark);
-            background: var(--bg-subtle);
-        }
-        .nav-links .btn {
-            padding: 10px 24px;
+            color: var(--text-2);
+            padding: 8px 14px;
             border-radius: 12px;
-            font-size: 0.85rem;
+            transition: all 0.2s ease;
         }
-        .menu-mobile-btn {
+        .nav-links a:hover { color: var(--text); background: var(--surface-2); }
+        .btn-nav {
+            background: var(--ink);
+            color: white !important;
+            padding: 10px 22px !important;
+            border-radius: 14px !important;
+            font-weight: 600 !important;
+            font-size: 0.85rem !important;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+            transition: all 0.2s ease !important;
+        }
+        .btn-nav:hover {
+            background: #1e293b !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2) !important;
+        }
+        .menu-btn {
             display: none;
             background: none;
             border: none;
             cursor: pointer;
-            padding: 8px;
+            padding: 6px;
             border-radius: 10px;
-            transition: var(--transition-fast);
+            color: var(--text);
+            transition: background 0.2s;
         }
-        .menu-mobile-btn:hover {
-            background: var(--bg-subtle);
-        }
+        .menu-btn:hover { background: var(--surface-2); }
 
         /* MOBILE MENU */
-        .mobile-menu-overlay {
+        .mobile-overlay {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(4px);
-            z-index: 998;
+            background: rgba(5,5,10,0.6);
+            backdrop-filter: blur(8px);
+            z-index: 1001;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        .mobile-menu-overlay.active {
-            opacity: 1;
-        }
-        .mobile-menu {
+        .mobile-overlay.open { opacity: 1; }
+        .mobile-drawer {
             display: none;
             position: fixed;
-            top: 0;
-            right: -100%;
-            width: 300px;
+            top: 0; right: -100%;
+            width: min(320px, 85vw);
             height: 100vh;
             background: var(--white);
-            z-index: 999;
-            padding: 80px 30px 30px;
-            transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: -10px 0 40px rgba(0,0,0,0.1);
+            z-index: 1002;
+            padding: 88px 28px 28px;
+            transition: right 0.4s var(--ease);
+            box-shadow: -20px 0 60px rgba(0,0,0,0.12);
         }
-        .mobile-menu.active {
-            right: 0;
-        }
-        .mobile-menu a {
-            display: block;
-            padding: 16px 0;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            border-bottom: 1px solid var(--border);
-        }
-        .mobile-menu .btn {
-            width: 100%;
-            margin-top: 20px;
-        }
-        .mobile-close-btn {
+        .mobile-drawer.open { right: 0; }
+        .drawer-close {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
+            top: 22px; right: 22px;
+            background: var(--surface-2);
             border: none;
+            border-radius: 12px;
+            width: 40px; height: 40px;
             cursor: pointer;
-            padding: 8px;
+            display: flex; align-items: center; justify-content: center;
         }
-
-        /* HERO SECTION */
-        .hero {
-            min-height: 100vh;
-            background: var(--primary);
+        .mobile-drawer a {
+            display: flex;
+            align-items: center;
+            padding: 16px 0;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text);
+            border-bottom: 1px solid var(--border);
+            transition: color 0.2s;
+        }
+        .mobile-drawer a:hover { color: var(--blue); }
+        .mobile-drawer .btn-wpp-full {
+            margin-top: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
+            gap: 10px;
+            background: #25d366;
+            color: white;
+            padding: 16px;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        /* =========================================
+           HERO
+        ========================================= */
+        .hero {
+            min-height: 100vh;
+            background: var(--ink);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            color: var(--white);
+            color: white;
             position: relative;
             overflow: hidden;
+            padding: 120px 24px 80px;
         }
-        .hero::before {
-            content: '';
+        /* orbs animados */
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            animation: orb-float 12s ease-in-out infinite;
+        }
+        .orb-1 {
+            width: 600px; height: 600px;
+            background: radial-gradient(circle, rgba(37,99,235,0.25), transparent 70%);
+            top: -200px; left: -150px;
+            animation-delay: 0s;
+        }
+        .orb-2 {
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(124,58,237,0.18), transparent 70%);
+            bottom: -150px; right: -100px;
+            animation-delay: -4s;
+        }
+        .orb-3 {
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(245,158,11,0.1), transparent 70%);
+            top: 40%; left: 60%;
+            animation-delay: -8s;
+        }
+        @keyframes orb-float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -40px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.97); }
+        }
+        /* grid noise */
+        .hero-grid {
             position: absolute;
             inset: 0;
-            background:
-                radial-gradient(ellipse 80% 60% at 50% 0%, rgba(37,99,235,0.15) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 80% 100%, rgba(99,102,241,0.1) 0%, transparent 50%),
-                radial-gradient(ellipse 50% 40% at 10% 80%, rgba(245,158,11,0.05) 0%, transparent 50%);
+            background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black, transparent);
             pointer-events: none;
         }
-        .hero-grid-bg {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 60px 60px;
-            pointer-events: none;
-        }
-        .hero-watermark {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 70%;
-            max-width: 700px;
-            opacity: 0.04;
-            z-index: 0;
-            pointer-events: none;
-            filter: grayscale(1) brightness(2);
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 850px;
-            padding: 0 20px;
-        }
+        .hero-content { position: relative; z-index: 2; max-width: 860px; }
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            padding: 8px 20px;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.12);
+            padding: 7px 18px 7px 12px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.1);
             border-radius: 100px;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 500;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 32px;
-            backdrop-filter: blur(10px);
+            color: rgba(255,255,255,0.65);
+            margin-bottom: 36px;
+            backdrop-filter: blur(12px);
         }
-        .hero-badge .dot {
-            width: 8px;
-            height: 8px;
-            background: var(--success);
+        .live-dot {
+            width: 8px; height: 8px;
+            background: #22c55e;
             border-radius: 50%;
-            animation: dot-pulse 2s infinite;
+            box-shadow: 0 0 0 0 rgba(34,197,94,0.4);
+            animation: live-pulse 2s infinite;
         }
-        @keyframes dot-pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
+        @keyframes live-pulse {
+            0% { box-shadow: 0 0 0 0 rgba(34,197,94,0.4); }
+            70% { box-shadow: 0 0 0 8px rgba(34,197,94,0); }
+            100% { box-shadow: 0 0 0 0 rgba(34,197,94,0); }
         }
         .hero h1 {
-            font-size: clamp(2.8rem, 7vw, 4.5rem);
-            margin-bottom: 24px;
-            line-height: 1.05;
-            letter-spacing: -2px;
-            font-weight: 900;
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(3rem, 7.5vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -3px;
+            margin-bottom: 28px;
+            color: white;
         }
-        .hero h1 .gradient-text {
-            background: linear-gradient(135deg, #60a5fa, #a78bfa, #fb923c);
+        .hero h1 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #93c5fd 0%, #c4b5fd 50%, #fbbf24 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 48px;
-            color: rgba(255,255,255,0.6);
-            font-weight: 400;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
+        .hero-sub {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.48);
+            max-width: 520px;
+            margin: 0 auto 52px;
+            line-height: 1.75;
+            font-weight: 300;
         }
-        .hero-btns {
+        .hero-ctas {
             display: flex;
-            gap: 16px;
+            align-items: center;
             justify-content: center;
+            gap: 14px;
             flex-wrap: wrap;
+            margin-bottom: 80px;
         }
-        .hero-btns .btn {
-            padding: 18px 40px;
-            font-size: 1rem;
+        .btn-wpp-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #25d366;
+            color: white;
+            font-weight: 700;
+            font-size: 0.95rem;
+            padding: 16px 32px;
             border-radius: 16px;
+            box-shadow: 0 0 0 0 rgba(37,211,102,0.4);
+            animation: hero-wpp-pulse 3s infinite;
+            transition: all 0.3s var(--ease);
+        }
+        .btn-wpp-hero:hover {
+            background: #1fb855;
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(37,211,102,0.35);
+        }
+        @keyframes hero-wpp-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.3); }
+            50% { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+        }
+        .btn-ghost-hero {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            color: rgba(255,255,255,0.6);
+            font-weight: 500;
+            font-size: 0.9rem;
+            padding: 16px 28px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.12);
+            transition: all 0.3s var(--ease);
+        }
+        .btn-ghost-hero:hover {
+            color: white;
+            border-color: rgba(255,255,255,0.3);
+            background: rgba(255,255,255,0.05);
+        }
+        /* STATS ROW no hero */
+        .hero-stats {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0;
+            padding: 20px 32px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            width: fit-content;
+            margin: 0 auto;
+        }
+        .stat-item {
+            text-align: center;
+            padding: 0 36px;
+            position: relative;
+        }
+        .stat-item + .stat-item::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 50%;
+            transform: translateY(-50%);
+            width: 1px; height: 40px;
+            background: rgba(255,255,255,0.1);
+        }
+        .stat-num {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            color: white;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+        .stat-label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 500;
         }
 
-        /* MARQUEE DE SERVIÇOS */
-        .services-marquee {
-            background: var(--bg-light);
-            padding: 20px 0;
+        /* =========================================
+           MARQUEE
+        ========================================= */
+        .marquee-wrap {
             overflow: hidden;
+            background: var(--surface);
             border-top: 1px solid var(--border);
             border-bottom: 1px solid var(--border);
+            padding: 16px 0;
         }
         .marquee-track {
             display: flex;
-            gap: 48px;
-            animation: marquee 30s linear infinite;
+            gap: 0;
             width: max-content;
+            animation: scroll-marquee 35s linear infinite;
         }
         .marquee-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-mid);
+            gap: 12px;
+            padding: 0 36px;
             white-space: nowrap;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text-3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
-        .marquee-item .marker {
-            width: 6px;
-            height: 6px;
-            background: var(--secondary);
-            border-radius: 50%;
-        }
-        @keyframes marquee {
+        .marquee-item svg { color: var(--blue); flex-shrink: 0; }
+        @keyframes scroll-marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* SEÇÃO TÍTULOS */
-        .section-header {
-            text-align: center;
-            margin-bottom: 72px;
-        }
-        .section-label {
+        /* =========================================
+           DIFERENCIAIS
+        ========================================= */
+        .diferenciais { padding: 120px 5%; }
+        .diferenciais .container { max-width: 1200px; margin: 0 auto; }
+        .section-eyebrow {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            padding: 6px 16px;
-            background: rgba(37, 99, 235, 0.08);
-            border: 1px solid rgba(37, 99, 235, 0.15);
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--secondary);
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            color: var(--blue);
+            background: rgba(37,99,235,0.07);
+            border: 1px solid rgba(37,99,235,0.14);
+            padding: 6px 14px;
+            border-radius: 100px;
             margin-bottom: 20px;
         }
-        .section-header h2 {
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: var(--text-dark);
-            margin-bottom: 16px;
-            letter-spacing: -1px;
+        .section-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: var(--text);
+            letter-spacing: -1.5px;
+            line-height: 1.1;
+            margin-bottom: 14px;
         }
-        .section-header p {
-            font-size: 1.1rem;
-            color: var(--text-mid);
-            max-width: 550px;
-            margin: 0 auto;
+        .section-desc {
+            font-size: 1.05rem;
+            color: var(--text-3);
+            max-width: 500px;
+            line-height: 1.75;
         }
-
-        /* CATÁLOGO GRID */
-        .portfolio-grid {
+        .diferenciais-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 64px;
+            flex-wrap: wrap;
+        }
+        .diferenciais-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .dif-card {
+            padding: 32px 28px;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            background: var(--white);
+            transition: all 0.4s var(--ease);
+            position: relative;
+            overflow: hidden;
+        }
+        .dif-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--blue), var(--violet));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .dif-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.08); }
+        .dif-card:hover::before { opacity: 1; }
+        .dif-icon {
+            width: 52px; height: 52px;
+            background: var(--surface-2);
+            border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 20px;
+            color: var(--blue);
+            transition: all 0.3s var(--ease);
+        }
+        .dif-card:hover .dif-icon {
+            background: var(--blue);
+            color: white;
+            transform: rotate(-8deg) scale(1.05);
+        }
+        .dif-card h3 {
+            font-family: 'Syne', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 10px;
+            letter-spacing: -0.3px;
+        }
+        .dif-card p { font-size: 0.88rem; color: var(--text-3); line-height: 1.7; }
+
+        /* =========================================
+           CATÁLOGO
+        ========================================= */
+        .catalogo { padding: 120px 5%; background: var(--surface); }
+        .catalogo .container { max-width: 1200px; margin: 0 auto; }
+        .catalogo-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 32px;
+            margin-bottom: 64px;
+            flex-wrap: wrap;
+        }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
         .product-card {
             background: var(--white);
-            border-radius: 20px;
+            border-radius: 22px;
             overflow: hidden;
-            transition: var(--transition);
             border: 1px solid var(--border);
+            transition: all 0.4s var(--ease);
             display: flex;
             flex-direction: column;
+            position: relative;
         }
         .product-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            box-shadow: 0 24px 64px rgba(0,0,0,0.1);
             border-color: transparent;
         }
-        .product-img-wrapper {
+        .product-num {
+            position: absolute;
+            top: 14px; left: 14px;
+            width: 28px; height: 28px;
+            background: rgba(255,255,255,0.9);
+            backdrop-filter: blur(8px);
+            border-radius: 9px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: var(--text-3);
+            z-index: 2;
+            border: 1px solid rgba(255,255,255,0.5);
+        }
+        .product-img-wrap {
             aspect-ratio: 1;
             overflow: hidden;
-            background: var(--bg-subtle);
-            position: relative;
+            background: var(--surface-2);
             cursor: pointer;
+            position: relative;
         }
-        .product-img-wrapper::after {
-            content: '';
+        .product-img-overlay {
             position: absolute;
             inset: 0;
-            background: rgba(0,0,0,0);
-            transition: var(--transition-fast);
+            background: rgba(5,5,10,0);
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s var(--ease);
+            z-index: 1;
+        }
+        .product-img-overlay span {
+            display: flex; align-items: center; gap: 6px;
+            background: rgba(5,5,10,0.75);
+            backdrop-filter: blur(8px);
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 10px 18px;
+            border-radius: 100px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s var(--ease);
+        }
+        .product-img-wrap:hover .product-img-overlay { background: rgba(5,5,10,0.2); }
+        .product-img-wrap:hover .product-img-overlay span { opacity: 1; transform: translateY(0); }
+        .product-card img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s var(--ease);
+        }
+        .product-card:hover img { transform: scale(1.07); }
+        .product-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            flex-grow: 1;
+        }
+        .product-body h3 {
+            font-size: 0.92rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.4;
+        }
+        .btn-wpp-sm {
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        .product-img-wrapper:hover::after {
-            background: rgba(0,0,0,0.15);
-        }
-        .product-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .product-card:hover img {
-            transform: scale(1.08);
-        }
-        .product-info {
-            padding: 24px;
-            text-align: center;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 16px;
-        }
-        .product-info h3 {
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            font-family: 'Inter', sans-serif;
-        }
-        .btn-sm-wpp {
-            padding: 12px 20px;
-            font-size: 0.82rem;
-            width: 100%;
+            gap: 8px;
+            background: #f0fdf4;
+            color: #15803d;
+            border: 1px solid #bbf7d0;
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: 11px 16px;
             border-radius: 12px;
+            transition: all 0.25s var(--ease);
+        }
+        .btn-wpp-sm:hover {
+            background: #25d366;
+            color: white;
+            border-color: #25d366;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(37,211,102,0.25);
         }
 
-        /* CAMPANHAS */
-        .campanhas-grid {
+        /* =========================================
+           CAMPANHAS — BENTO GRID
+        ========================================= */
+        .campanhas { padding: 120px 5%; background: var(--white); }
+        .campanhas .container { max-width: 1200px; margin: 0 auto; }
+        .campanhas-header { margin-bottom: 64px; }
+        .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: auto;
+            gap: 20px;
         }
-        .campanha-card {
-            border-radius: 20px;
+        .bento-card {
+            border-radius: 22px;
             overflow: hidden;
-            transition: var(--transition);
             cursor: pointer;
             border: 1px solid var(--border);
-            background: var(--white);
+            transition: all 0.4s var(--ease);
+            position: relative;
         }
-        .campanha-card img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .campanha-card:hover {
+        .bento-card:hover {
             transform: translateY(-6px);
             box-shadow: 0 20px 60px rgba(0,0,0,0.1);
             border-color: transparent;
         }
-        .campanha-card:hover img {
-            transform: scale(1.05);
+        .bento-card img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s var(--ease);
+            display: block;
         }
+        .bento-card:hover img { transform: scale(1.04); }
+        /* tamanhos variados */
+        .bento-card:nth-child(1) { grid-column: span 2; }
+        .bento-card:nth-child(4) { grid-column: span 2; }
 
-        /* CTA FINAL */
-        .cta-section {
-            background: var(--primary);
+        /* =========================================
+           CTA FINAL
+        ========================================= */
+        .cta-wrap { padding: 0 5% 120px; }
+        .cta-box {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--ink-2);
             border-radius: 32px;
-            margin: 0 5% 100px;
-            padding: 100px 40px;
-            color: white;
+            padding: 100px 48px;
             text-align: center;
             position: relative;
             overflow: hidden;
         }
-        .cta-section::before {
+        .cta-box::before {
             content: '';
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse 50% 80% at 20% 100%, rgba(37,99,235,0.15) 0%, transparent 60%),
-                radial-gradient(ellipse 50% 60% at 80% 0%, rgba(99,102,241,0.1) 0%, transparent 50%);
+                radial-gradient(ellipse 60% 70% at 15% 100%, rgba(37,99,235,0.18), transparent 55%),
+                radial-gradient(ellipse 50% 60% at 85% 0%, rgba(124,58,237,0.12), transparent 50%);
             pointer-events: none;
         }
-        .cta-section h2 {
-            font-size: clamp(2rem, 5vw, 3.2rem);
-            margin-bottom: 20px;
-            line-height: 1.1;
-            letter-spacing: -1px;
-            position: relative;
+        .cta-box-grid {
+            position: absolute;
+            inset: 0;
+            background-image: linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black, transparent);
         }
-        .cta-section p {
-            font-size: 1.15rem;
-            margin-bottom: 48px;
-            color: rgba(255,255,255,0.5);
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            margin-bottom: 48px;
-            position: relative;
+        .cta-content { position: relative; z-index: 2; }
+        .cta-box h2 {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: white;
+            letter-spacing: -2px;
+            margin-bottom: 18px;
+            line-height: 1.05;
         }
-        .btn-big-wpp {
-            padding: 22px 56px;
-            font-size: 1.15rem;
-            border-radius: 18px;
-            position: relative;
-            animation: glow-pulse 3s infinite;
+        .cta-box h2 em {
+            font-style: normal;
+            background: linear-gradient(135deg, #86efac, #22c55e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        @keyframes glow-pulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.3); }
-            50% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
+        .cta-box p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.45);
+            max-width: 520px;
+            margin: 0 auto 48px;
+            line-height: 1.75;
         }
-        .contact-info-footer {
+        .btn-cta-wpp {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: #25d366;
+            color: white;
+            font-weight: 700;
+            font-size: 1.05rem;
+            padding: 20px 48px;
+            border-radius: 20px;
+            animation: cta-glow 3s infinite;
+            transition: all 0.3s var(--ease);
+        }
+        .btn-cta-wpp:hover {
+            background: #1fb855;
+            transform: translateY(-3px);
+            box-shadow: 0 16px 40px rgba(37,211,102,0.4);
+        }
+        @keyframes cta-glow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.25); }
+            50% { box-shadow: 0 0 0 20px rgba(37,211,102,0); }
+        }
+        .cta-contacts {
             display: flex;
+            align-items: center;
             justify-content: center;
+            gap: 48px;
             flex-wrap: wrap;
-            gap: 40px;
-            margin-top: 64px;
+            margin-top: 60px;
             padding-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            position: relative;
+            border-top: 1px solid rgba(255,255,255,0.07);
         }
-        .info-footer-item {
+        .cta-contact-item {
             display: flex;
             align-items: center;
             gap: 10px;
+            font-size: 0.9rem;
             font-weight: 500;
-            color: rgba(255,255,255,0.5);
-            font-size: 0.95rem;
+            color: rgba(255,255,255,0.38);
         }
 
-        /* FLOAT WPP */
-        .float-wpp {
-            position: fixed;
-            bottom: 28px;
-            right: 28px;
-            z-index: 999;
-            background-color: #25d366;
-            color: white;
-            width: 60px;
-            height: 60px;
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
-            transition: var(--transition);
-        }
-        .float-wpp:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(37, 211, 102, 0.45);
-        }
-
-        /* FOOTER */
+        /* =========================================
+           FOOTER
+        ========================================= */
         footer {
-            background: var(--primary);
-            color: var(--text-light);
+            background: var(--ink);
             padding: 80px 5% 40px;
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
         }
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
-            gap: 60px;
+            grid-template-columns: 2.2fr 1fr 1fr;
+            gap: 80px;
+            margin-bottom: 60px;
         }
-        .footer-col p {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.9rem;
+        .footer-brand p {
+            font-size: 0.875rem;
+            color: rgba(255,255,255,0.3);
             line-height: 1.8;
+            margin-top: 20px;
+            max-width: 280px;
         }
-        .footer-col h4 {
-            color: white;
-            margin-bottom: 24px;
-            font-size: 0.95rem;
+        .footer-col-title {
+            font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: 0.5px;
             text-transform: uppercase;
-            font-family: 'Inter', sans-serif;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.3);
+            margin-bottom: 24px;
         }
-        .footer-links a {
+        .footer-links a, .footer-links li {
             display: block;
-            margin-bottom: 14px;
-            transition: var(--transition-fast);
-            color: rgba(255,255,255,0.4);
             font-size: 0.9rem;
-        }
-        .footer-links a:hover {
-            color: var(--white);
-            transform: translateX(4px);
-        }
-        .footer-links li {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.9rem;
+            color: rgba(255,255,255,0.45);
             margin-bottom: 14px;
+            transition: color 0.2s;
         }
+        .footer-links a:hover { color: rgba(255,255,255,0.85); }
         .footer-bottom {
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.06);
             font-size: 0.8rem;
-            margin-top: 64px;
-            color: rgba(255,255,255,0.25);
+            color: rgba(255,255,255,0.2);
+            flex-wrap: wrap;
+            gap: 12px;
         }
 
-        /* MODAL / LIGHTBOX */
-        .modal {
+        /* =========================================
+           FLOAT WPP
+        ========================================= */
+        .float-wpp {
+            position: fixed;
+            bottom: 28px; right: 28px;
+            z-index: 900;
+            width: 58px; height: 58px;
+            background: #25d366;
+            border-radius: 18px;
+            display: flex; align-items: center; justify-content: center;
+            color: white;
+            box-shadow: 0 8px 32px rgba(37,211,102,0.35);
+            transition: all 0.3s var(--ease);
+        }
+        .float-wpp:hover { transform: translateY(-4px) scale(1.06); box-shadow: 0 14px 40px rgba(37,211,102,0.45); }
+
+        /* =========================================
+           LIGHTBOX
+        ========================================= */
+        #lightbox {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.95);
+            background: rgba(5,5,10,0.97);
             z-index: 2000;
             display: none;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            backdrop-filter: blur(20px);
+            padding: 24px;
+            backdrop-filter: blur(24px);
         }
-        .modal-content {
-            max-width: 900px;
-            width: 100%;
+        .lb-content {
             position: relative;
-        }
-        .modal-content img {
+            max-width: 920px;
             width: 100%;
-            border-radius: 16px;
         }
-        .close-modal {
+        .lb-content img { width: 100%; border-radius: 18px; }
+        .lb-close {
             position: absolute;
-            top: -50px;
-            right: 0;
-            color: rgba(255,255,255,0.5);
-            font-size: 2rem;
-            cursor: pointer;
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            top: -56px; right: 0;
+            width: 44px; height: 44px;
+            background: rgba(255,255,255,0.08);
             border-radius: 12px;
-            transition: var(--transition-fast);
+            display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.6);
+            cursor: pointer;
+            border: 1px solid rgba(255,255,255,0.1);
+            font-size: 1.5rem;
+            transition: all 0.2s;
         }
-        .close-modal:hover {
-            color: white;
-            background: rgba(255,255,255,0.1);
-        }
+        .lb-close:hover { background: rgba(255,255,255,0.14); color: white; }
 
-        /* RESPONSIVO */
-        @media (max-width: 1024px) {
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+        /* =========================================
+           RESPONSIVE
+        ========================================= */
+        @media (max-width: 1100px) {
+            .diferenciais-grid { grid-template-columns: repeat(2, 1fr); }
+            .products-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 900px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .bento-card:nth-child(1) { grid-column: span 2; }
+            .bento-card:nth-child(4) { grid-column: span 1; }
         }
         @media (max-width: 768px) {
-            section { padding: 80px 5%; }
+            #header { top: 8px; width: calc(100% - 24px); }
             .nav-links { display: none; }
-            .menu-mobile-btn { display: block; }
-            .mobile-menu { display: block; }
-            .mobile-menu-overlay { display: block; }
-            .hero h1 { font-size: 2.4rem; letter-spacing: -1px; }
-            .hero p { font-size: 1.05rem; }
-            .hero-btns .btn { width: 100%; }
-            .btn-big-wpp { padding: 18px 32px; font-size: 1rem; width: 100%; }
+            .menu-btn { display: flex; }
+            .mobile-overlay, .mobile-drawer { display: block; }
+            .hero h1 { font-size: 2.8rem; letter-spacing: -1.5px; }
+            .hero-sub { font-size: 1rem; }
+            .hero-stats { flex-wrap: wrap; gap: 0; padding: 16px 20px; }
+            .stat-item { padding: 10px 20px; }
+            .diferenciais-grid { grid-template-columns: 1fr; }
+            .products-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .bento-card:nth-child(1),
+            .bento-card:nth-child(4) { grid-column: span 1; }
+            .cta-box { padding: 64px 24px; border-radius: 24px; }
+            .cta-contacts { gap: 24px; }
             .footer-grid { grid-template-columns: 1fr; gap: 40px; }
-            .section-header h2 { font-size: 2rem; }
-            .cta-section { padding: 64px 24px; border-radius: 24px; margin: 0 4% 60px; }
-            .portfolio-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
-            .campanhas-grid { grid-template-columns: 1fr; }
-            .contact-info-footer { flex-direction: column; align-items: center; gap: 20px; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .diferenciais-header, .catalogo-header { flex-direction: column; align-items: flex-start; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2.2rem; }
+            .products-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Botão Flutuante WhatsApp -->
+    <!-- Cursor Glow -->
+    <div class="cursor-glow" id="cursorGlow"></div>
+
+    <!-- Float WhatsApp -->
     <a href="https://wa.me/5511915152656?text=Olá! Gostaria de fazer um orçamento." class="float-wpp" target="_blank" aria-label="WhatsApp">
-        <i data-lucide="message-circle" size="28"></i>
+        <i data-lucide="message-circle" size="26"></i>
     </a>
 
-    <!-- Mobile Menu Overlay -->
-    <div class="mobile-menu-overlay" id="mobileOverlay" onclick="closeMenu()"></div>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-close-btn" onclick="closeMenu()">
-            <i data-lucide="x" size="28"></i>
+    <!-- Mobile Overlay & Drawer -->
+    <div class="mobile-overlay" id="mobileOverlay" onclick="closeDrawer()"></div>
+    <div class="mobile-drawer" id="mobileDrawer">
+        <button class="drawer-close" onclick="closeDrawer()">
+            <i data-lucide="x" size="20"></i>
         </button>
-        <a href="#home" onclick="closeMenu()">Início</a>
-        <a href="#portfolio" onclick="closeMenu()">Catálogo</a>
-        <a href="#campanhas" onclick="closeMenu()">Campanhas</a>
-        <a href="https://wa.me/5511915152656?text=Olá! Vim pelo site e gostaria de um orçamento." class="btn btn-primary" onclick="closeMenu()">Orçamento Agora</a>
+        <a href="#home" onclick="closeDrawer()">Início</a>
+        <a href="#catalogo" onclick="closeDrawer()">Catálogo</a>
+        <a href="#campanhas" onclick="closeDrawer()">Campanhas</a>
+        <a href="https://wa.me/5511915152656?text=Olá! Vim pelo site e gostaria de um orçamento." class="btn-wpp-full" target="_blank" onclick="closeDrawer()">
+            <i data-lucide="message-circle" size="18"></i> Pedir Orçamento
+        </a>
     </div>
 
     <!-- Header -->
     <header id="header">
         <nav>
-            <a href="#home" class="logo">
-                <img src="https://i.ibb.co/K8cWpfG/logo-sem-fundo-snow.png" alt="Snow Print Logo" class="logo-img">
+            <a href="#home">
+                <img src="https://i.ibb.co/K8cWpfG/logo-sem-fundo-snow.png" alt="Snow Print" class="logo-img">
             </a>
-            <ul class="nav-links" id="navLinks">
+            <ul class="nav-links">
                 <li><a href="#home">Início</a></li>
-                <li><a href="#portfolio">Catálogo</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
                 <li><a href="#campanhas">Campanhas</a></li>
-                <li><a href="https://wa.me/5511915152656?text=Olá! Vim pelo site e gostaria de um orçamento." class="btn btn-primary">Orçamento Agora</a></li>
+                <li><a href="https://wa.me/5511915152656?text=Olá! Gostaria de fazer um orçamento." class="btn-nav" target="_blank">Pedir Orçamento</a></li>
             </ul>
-            <button class="menu-mobile-btn" onclick="toggleMenu()" aria-label="Menu">
-                <i data-lucide="menu" size="28"></i>
+            <button class="menu-btn" onclick="openDrawer()" aria-label="Menu">
+                <i data-lucide="menu" size="24"></i>
             </button>
         </nav>
     </header>
 
-    <!-- Hero Section -->
+    <!-- ======================== HERO ======================== -->
     <section class="hero" id="home">
-        <div class="hero-grid-bg"></div>
-        <img src="https://i.ibb.co/K8cWpfG/logo-sem-fundo-snow.png" alt="" class="hero-watermark">
+        <div class="hero-grid"></div>
+        <div class="hero-orb orb-1"></div>
+        <div class="hero-orb orb-2"></div>
+        <div class="hero-orb orb-3"></div>
 
         <div class="hero-content">
-            <div class="hero-badge fade-up">
-                <span class="dot"></span>
-                Brindes Premium em Barueri
+            <div class="hero-badge" data-reveal>
+                <span class="live-dot"></span>
+                Atendendo empresas em Barueri e região
             </div>
-            <h1 class="fade-up" style="transition-delay: 100ms;">
-                Brindes que <span class="gradient-text">elevam</span> a sua marca
+            <h1 data-reveal style="transition-delay:.1s">
+                Brindes que<br><em>marcam presença</em>
             </h1>
-            <p class="fade-up" style="transition-delay: 200ms;">
-                Produtos personalizados de alta qualidade com precisão absoluta e agilidade. Transforme sua identidade em algo memorável.
+            <p class="hero-sub" data-reveal style="transition-delay:.2s">
+                Produtos personalizados com precisão e acabamento premium. Sua marca impressa onde importa.
             </p>
-            <div class="hero-btns fade-up" style="transition-delay: 300ms;">
-                <a href="https://wa.me/5511915152656?text=Quero fazer um orçamento!" class="btn btn-whatsapp">
-                    <i data-lucide="message-circle" size="20"></i> Solicitar Orçamento
+            <div class="hero-ctas" data-reveal style="transition-delay:.3s">
+                <a href="https://wa.me/5511915152656?text=Quero fazer um orçamento!" class="btn-wpp-hero" target="_blank">
+                    <i data-lucide="message-circle" size="18"></i> Solicitar orçamento
                 </a>
-                <a href="#portfolio" class="btn btn-outline">
-                    Ver Catálogo
+                <a href="#catalogo" class="btn-ghost-hero">
+                    Ver catálogo <i data-lucide="arrow-down" size="16"></i>
                 </a>
+            </div>
+            <div class="hero-stats" data-reveal style="transition-delay:.4s">
+                <div class="stat-item">
+                    <div class="stat-num">500+</div>
+                    <div class="stat-label">Clientes atendidos</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">10k+</div>
+                    <div class="stat-label">Produtos entregues</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">5★</div>
+                    <div class="stat-label">Avaliação média</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">48h</div>
+                    <div class="stat-label">Resposta de orçamento</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Marquee de Serviços -->
-    <div class="services-marquee">
+    <!-- MARQUEE -->
+    <div class="marquee-wrap">
         <div class="marquee-track">
-            <div class="marquee-item"><span class="marker"></span> Gravação a Laser</div>
-            <div class="marquee-item"><span class="marker"></span> Impressão DTF UV</div>
-            <div class="marquee-item"><span class="marker"></span> Kits Corporativos</div>
-            <div class="marquee-item"><span class="marker"></span> Ações Promocionais</div>
-            <div class="marquee-item"><span class="marker"></span> Brindes Sustentáveis</div>
-            <div class="marquee-item"><span class="marker"></span> Personalização Total</div>
-            <div class="marquee-item"><span class="marker"></span> Entrega Rápida</div>
-            <div class="marquee-item"><span class="marker"></span> Atendimento Premium</div>
-            <!-- Duplicado para loop contínuo -->
-            <div class="marquee-item"><span class="marker"></span> Gravação a Laser</div>
-            <div class="marquee-item"><span class="marker"></span> Impressão DTF UV</div>
-            <div class="marquee-item"><span class="marker"></span> Kits Corporativos</div>
-            <div class="marquee-item"><span class="marker"></span> Ações Promocionais</div>
-            <div class="marquee-item"><span class="marker"></span> Brindes Sustentáveis</div>
-            <div class="marquee-item"><span class="marker"></span> Personalização Total</div>
-            <div class="marquee-item"><span class="marker"></span> Entrega Rápida</div>
-            <div class="marquee-item"><span class="marker"></span> Atendimento Premium</div>
+            <div class="marquee-item"><i data-lucide="zap" size="14"></i> Gravação a Laser</div>
+            <div class="marquee-item"><i data-lucide="printer" size="14"></i> Impressão DTF UV</div>
+            <div class="marquee-item"><i data-lucide="package" size="14"></i> Kits Corporativos</div>
+            <div class="marquee-item"><i data-lucide="star" size="14"></i> Qualidade Premium</div>
+            <div class="marquee-item"><i data-lucide="leaf" size="14"></i> Brindes Sustentáveis</div>
+            <div class="marquee-item"><i data-lucide="truck" size="14"></i> Entrega Ágil</div>
+            <div class="marquee-item"><i data-lucide="users" size="14"></i> Atendimento Dedicado</div>
+            <div class="marquee-item"><i data-lucide="award" size="14"></i> Ações Promocionais</div>
+            <!-- duplicado -->
+            <div class="marquee-item"><i data-lucide="zap" size="14"></i> Gravação a Laser</div>
+            <div class="marquee-item"><i data-lucide="printer" size="14"></i> Impressão DTF UV</div>
+            <div class="marquee-item"><i data-lucide="package" size="14"></i> Kits Corporativos</div>
+            <div class="marquee-item"><i data-lucide="star" size="14"></i> Qualidade Premium</div>
+            <div class="marquee-item"><i data-lucide="leaf" size="14"></i> Brindes Sustentáveis</div>
+            <div class="marquee-item"><i data-lucide="truck" size="14"></i> Entrega Ágil</div>
+            <div class="marquee-item"><i data-lucide="users" size="14"></i> Atendimento Dedicado</div>
+            <div class="marquee-item"><i data-lucide="award" size="14"></i> Ações Promocionais</div>
         </div>
     </div>
 
-    <!-- Catálogo de Produtos -->
-    <section id="portfolio" class="container">
-        <div class="section-header fade-up">
-            <div class="section-label">Produtos</div>
-            <h2>Nosso Catálogo</h2>
-            <p>Selecione um item para solicitar sua personalização exclusiva.</p>
-        </div>
-
-        <div class="portfolio-grid">
-            <div class="product-card fade-up">
-                <div class="product-img-wrapper" onclick="openLightbox('https://i.ibb.co/KxK84V5p/garrafa-termica-500ml.jpg')">
-                    <img src="https://i.ibb.co/KxK84V5p/garrafa-termica-500ml.jpg" alt="Garrafa Térmica 500ml" loading="lazy">
+    <!-- ======================== DIFERENCIAIS ======================== -->
+    <section class="diferenciais">
+        <div class="container">
+            <div class="diferenciais-header">
+                <div>
+                    <div class="section-eyebrow" data-reveal>Por que a Snow Print</div>
+                    <h2 class="section-title" data-reveal style="transition-delay:.05s">
+                        Feito com cuidado.<br>Entregue com excelência.
+                    </h2>
                 </div>
-                <div class="product-info">
-                    <h3>Garrafa Térmica 500ml</h3>
-                    <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Garrafa Térmica 500ml" class="btn btn-whatsapp btn-sm-wpp">Orçar este Produto</a>
-                </div>
+                <p class="section-desc" data-reveal="right" style="transition-delay:.1s">
+                    Cada detalhe importa. Desde a escolha do material até a embalagem final, trabalhamos para que sua marca se destaque.
+                </p>
             </div>
-            <div class="product-card fade-up" style="transition-delay: 50ms;">
-                <div class="product-img-wrapper" onclick="openLightbox('https://i.ibb.co/j97wYRF9/caneca-termica-350ml.jpg')">
-                    <img src="https://i.ibb.co/j97wYRF9/caneca-termica-350ml.jpg" alt="Caneca Térmica 350ml" loading="lazy">
+            <div class="diferenciais-grid">
+                <div class="dif-card" data-reveal style="transition-delay:.05s">
+                    <div class="dif-icon"><i data-lucide="zap" size="22"></i></div>
+                    <h3>Gravação a Laser</h3>
+                    <p>Precisão submilimétrica que dá acabamento profissional e durabilidade superior em metal, madeira e couro.</p>
                 </div>
-                <div class="product-info">
-                    <h3>Caneca Térmica 350ml</h3>
-                    <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Caneca Térmica 350ml" class="btn btn-whatsapp btn-sm-wpp">Orçar este Produto</a>
+                <div class="dif-card" data-reveal style="transition-delay:.1s">
+                    <div class="dif-icon"><i data-lucide="printer" size="22"></i></div>
+                    <h3>Impressão DTF UV</h3>
+                    <p>Cores vivas e alta definição em qualquer superfície, com resistência UV para brindes que duram.</p>
                 </div>
-            </div>
-            <div class="product-card fade-up" style="transition-delay: 100ms;">
-                <div class="product-img-wrapper" onclick="openLightbox('https://i.ibb.co/cSPH5x3c/copo-termico-320ml.jpg')">
-                    <img src="https://i.ibb.co/cSPH5x3c/copo-termico-320ml.jpg" alt="Copo Térmico 320ml" loading="lazy">
+                <div class="dif-card" data-reveal style="transition-delay:.15s">
+                    <div class="dif-icon"><i data-lucide="package" size="22"></i></div>
+                    <h3>Kits Corporativos</h3>
+                    <p>Combinações curadas de produtos para presentear equipes, clientes e parceiros com identidade visual.</p>
                 </div>
-                <div class="product-info">
-                    <h3>Copo Térmico 320ml</h3>
-                    <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Copo Térmico 320ml" class="btn btn-whatsapp btn-sm-wpp">Orçar este Produto</a>
-                </div>
-            </div>
-            <div class="product-card fade-up" style="transition-delay: 150ms;">
-                <div class="product-img-wrapper" onclick="openLightbox('https://i.ibb.co/Tq1993Zj/Brinde-a-for-a-que-transforma-o-mundo-ta-a-termica.jpg')">
-                    <img src="https://i.ibb.co/Tq1993Zj/Brinde-a-for-a-que-transforma-o-mundo-ta-a-termica.jpg" alt="Taça Térmica" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <h3>Taça Térmica Premium</h3>
-                    <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Taça Térmica Premium" class="btn btn-whatsapp btn-sm-wpp">Orçar este Produto</a>
-                </div>
-            </div>
-            <div class="product-card fade-up">
-                <div class="product-img-wrapper" onclick="openLightbox('https://i.ibb.co/LhgQ6MDt/power-bank-10-mil-mph.jpg')">
-                    <img src="https://i.ibb.co/LhgQ6MDt/power-bank-10-mil-mph.jpg" alt="Power Bank" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <h3>Power Bank 10.000 mAh</h3>
-                    <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Power Bank 10.000 mAh" class="btn btn-whatsapp btn-sm-wpp">Orçar este Produto</a>
-                </div>
-            </div>
-            <div class="product-card fade-up" style="transition-delay: 50ms;">
-                <div class="product-img-wrapper" onclick="openLightbox('https://i.ibb.co/xqSwkTYD/Caixa-de-som-bluetoth.jpg')">
-                    <img src="https://i.ibb.co/xqSwkTYD/Caixa-de-som-bluetoth.jpg" alt="Caixa de Som" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <h3>Caixa de Som Bluetooth</h3>
-                    <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Caixa de Som Bluetooth" class="btn btn-whatsapp btn-sm-wpp">Orçar este Produto</a>
-                </div>
-            </div>
-            <div class="product-card fade-up" style="transition-delay: 100ms;">
-                <div class="product-img-wrapper" onclick="openLightbox('https://i.ibb.co/Q7yfnRfj/umidificador.jpg')">
-                    <img src="https://i.ibb.co/Q7yfnRfj/umidificador.jpg" alt="Umidificador" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <h3>Umidificador de Ambiente</h3>
-                    <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Umidificador de Ambiente" class="btn btn-whatsapp btn-sm-wpp">Orçar este Produto</a>
-                </div>
-            </div>
-            <div class="product-card fade-up" style="transition-delay: 150ms;">
-                <div class="product-img-wrapper" onclick="openLightbox('https://i.ibb.co/vxKkV0DZ/bon-poliester-aba-curva.jpg')">
-                    <img src="https://i.ibb.co/vxKkV0DZ/bon-poliester-aba-curva.jpg" alt="Boné" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <h3>Boné Poliéster Aba Curva</h3>
-                    <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Boné Poliéster" class="btn btn-whatsapp btn-sm-wpp">Orçar este Produto</a>
-                </div>
-            </div>
-            <div class="product-card fade-up">
-                <div class="product-img-wrapper" onclick="openLightbox('https://i.ibb.co/tTkqvXqy/chaveiro-de-metal-abridor.jpg')">
-                    <img src="https://i.ibb.co/tTkqvXqy/chaveiro-de-metal-abridor.jpg" alt="Chaveiro Abridor" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <h3>Chaveiro Abridor de Metal</h3>
-                    <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Chaveiro Abridor de Metal" class="btn btn-whatsapp btn-sm-wpp">Orçar este Produto</a>
-                </div>
-            </div>
-            <div class="product-card fade-up" style="transition-delay: 50ms;">
-                <div class="product-img-wrapper" onclick="openLightbox('https://i.ibb.co/DHYZjB20/Mochila-Saco-em-poliester.jpg')">
-                    <img src="https://i.ibb.co/DHYZjB20/Mochila-Saco-em-poliester.jpg" alt="Mochila Saco" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <h3>Mochila Saco Esportiva</h3>
-                    <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Mochila Saco Esportiva" class="btn btn-whatsapp btn-sm-wpp">Orçar este Produto</a>
-                </div>
-            </div>
-            <div class="product-card fade-up" style="transition-delay: 100ms;">
-                <div class="product-img-wrapper" onclick="openLightbox('https://i.ibb.co/vxB6td2W/Eco-Bag.jpg')">
-                    <img src="https://i.ibb.co/vxB6td2W/Eco-Bag.jpg" alt="Eco Bag" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <h3>Eco Bag Sustentável</h3>
-                    <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Eco Bag" class="btn btn-whatsapp btn-sm-wpp">Orçar este Produto</a>
-                </div>
-            </div>
-            <div class="product-card fade-up" style="transition-delay: 150ms;">
-                <div class="product-img-wrapper" onclick="openLightbox('https://i.ibb.co/fdT35048/Kit-banho-6-pe-as.jpg')">
-                    <img src="https://i.ibb.co/fdT35048/Kit-banho-6-pe-as.jpg" alt="Kit Banho" loading="lazy">
-                </div>
-                <div class="product-info">
-                    <h3>Kit Banho 6 Peças</h3>
-                    <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Kit Banho 6 Peças" class="btn btn-whatsapp btn-sm-wpp">Orçar este Produto</a>
+                <div class="dif-card" data-reveal style="transition-delay:.2s">
+                    <div class="dif-icon"><i data-lucide="headphones" size="22"></i></div>
+                    <h3>Atendimento Ágil</h3>
+                    <p>Orçamento em até 48h, comunicação direta pelo WhatsApp e acompanhamento do pedido em tempo real.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Campanhas -->
-    <section id="campanhas" style="background: var(--bg-light);">
+    <!-- ======================== CATÁLOGO ======================== -->
+    <section class="catalogo" id="catalogo">
         <div class="container">
-            <div class="section-header fade-up">
-                <div class="section-label">Marketing</div>
-                <h2>Campanhas Especiais</h2>
-                <p>Estratégias de personalização para elevar o valor da sua empresa.</p>
+            <div class="catalogo-header">
+                <div>
+                    <div class="section-eyebrow" data-reveal>Produtos</div>
+                    <h2 class="section-title" data-reveal style="transition-delay:.05s">Nosso Catálogo</h2>
+                    <p class="section-desc" data-reveal style="transition-delay:.1s">Clique em qualquer produto para ampliar ou orçar diretamente pelo WhatsApp.</p>
+                </div>
             </div>
-            <div class="campanhas-grid">
-                <div class="campanha-card fade-up" onclick="openLightbox('https://i.ibb.co/2JYJnmj/3-motivos-pra-investir.jpg')">
-                    <img src="https://i.ibb.co/2JYJnmj/3-motivos-pra-investir.jpg" alt="Motivos para investir" loading="lazy">
+            <div class="products-grid">
+
+                <div class="product-card" data-reveal style="transition-delay:.05s">
+                    <span class="product-num">01</span>
+                    <div class="product-img-wrap" onclick="openLB('https://i.ibb.co/KxK84V5p/garrafa-termica-500ml.jpg')">
+                        <div class="product-img-overlay"><span><i data-lucide="zoom-in" size="14"></i> Ampliar</span></div>
+                        <img src="https://i.ibb.co/KxK84V5p/garrafa-termica-500ml.jpg" alt="Garrafa Térmica 500ml" loading="lazy">
+                    </div>
+                    <div class="product-body">
+                        <h3>Garrafa Térmica 500ml</h3>
+                        <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Garrafa Térmica 500ml" class="btn-wpp-sm" target="_blank"><i data-lucide="message-circle" size="14"></i> Orçar produto</a>
+                    </div>
                 </div>
-                <div class="campanha-card fade-up" style="transition-delay: 50ms;" onclick="openLightbox('https://i.ibb.co/6738KB5n/Produtos-personalizados-para-o-SIPAT-na-sua-empresa.jpg')">
-                    <img src="https://i.ibb.co/6738KB5n/Produtos-personalizados-para-o-SIPAT-na-sua-empresa.jpg" alt="Campanha SIPAT" loading="lazy">
+
+                <div class="product-card" data-reveal style="transition-delay:.08s">
+                    <span class="product-num">02</span>
+                    <div class="product-img-wrap" onclick="openLB('https://i.ibb.co/j97wYRF9/caneca-termica-350ml.jpg')">
+                        <div class="product-img-overlay"><span><i data-lucide="zoom-in" size="14"></i> Ampliar</span></div>
+                        <img src="https://i.ibb.co/j97wYRF9/caneca-termica-350ml.jpg" alt="Caneca Térmica 350ml" loading="lazy">
+                    </div>
+                    <div class="product-body">
+                        <h3>Caneca Térmica 350ml</h3>
+                        <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Caneca Térmica 350ml" class="btn-wpp-sm" target="_blank"><i data-lucide="message-circle" size="14"></i> Orçar produto</a>
+                    </div>
                 </div>
-                <div class="campanha-card fade-up" style="transition-delay: 100ms;" onclick="openLightbox('https://i.ibb.co/Ndmg1jff/Mito-ou-verdade.jpg')">
+
+                <div class="product-card" data-reveal style="transition-delay:.11s">
+                    <span class="product-num">03</span>
+                    <div class="product-img-wrap" onclick="openLB('https://i.ibb.co/cSPH5x3c/copo-termico-320ml.jpg')">
+                        <div class="product-img-overlay"><span><i data-lucide="zoom-in" size="14"></i> Ampliar</span></div>
+                        <img src="https://i.ibb.co/cSPH5x3c/copo-termico-320ml.jpg" alt="Copo Térmico 320ml" loading="lazy">
+                    </div>
+                    <div class="product-body">
+                        <h3>Copo Térmico 320ml</h3>
+                        <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Copo Térmico 320ml" class="btn-wpp-sm" target="_blank"><i data-lucide="message-circle" size="14"></i> Orçar produto</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-reveal style="transition-delay:.14s">
+                    <span class="product-num">04</span>
+                    <div class="product-img-wrap" onclick="openLB('https://i.ibb.co/Tq1993Zj/Brinde-a-for-a-que-transforma-o-mundo-ta-a-termica.jpg')">
+                        <div class="product-img-overlay"><span><i data-lucide="zoom-in" size="14"></i> Ampliar</span></div>
+                        <img src="https://i.ibb.co/Tq1993Zj/Brinde-a-for-a-que-transforma-o-mundo-ta-a-termica.jpg" alt="Taça Térmica" loading="lazy">
+                    </div>
+                    <div class="product-body">
+                        <h3>Taça Térmica Premium</h3>
+                        <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Taça Térmica Premium" class="btn-wpp-sm" target="_blank"><i data-lucide="message-circle" size="14"></i> Orçar produto</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-reveal style="transition-delay:.05s">
+                    <span class="product-num">05</span>
+                    <div class="product-img-wrap" onclick="openLB('https://i.ibb.co/LhgQ6MDt/power-bank-10-mil-mph.jpg')">
+                        <div class="product-img-overlay"><span><i data-lucide="zoom-in" size="14"></i> Ampliar</span></div>
+                        <img src="https://i.ibb.co/LhgQ6MDt/power-bank-10-mil-mph.jpg" alt="Power Bank" loading="lazy">
+                    </div>
+                    <div class="product-body">
+                        <h3>Power Bank 10.000 mAh</h3>
+                        <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Power Bank 10.000 mAh" class="btn-wpp-sm" target="_blank"><i data-lucide="message-circle" size="14"></i> Orçar produto</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-reveal style="transition-delay:.08s">
+                    <span class="product-num">06</span>
+                    <div class="product-img-wrap" onclick="openLB('https://i.ibb.co/xqSwkTYD/Caixa-de-som-bluetoth.jpg')">
+                        <div class="product-img-overlay"><span><i data-lucide="zoom-in" size="14"></i> Ampliar</span></div>
+                        <img src="https://i.ibb.co/xqSwkTYD/Caixa-de-som-bluetoth.jpg" alt="Caixa de Som" loading="lazy">
+                    </div>
+                    <div class="product-body">
+                        <h3>Caixa de Som Bluetooth</h3>
+                        <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Caixa de Som Bluetooth" class="btn-wpp-sm" target="_blank"><i data-lucide="message-circle" size="14"></i> Orçar produto</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-reveal style="transition-delay:.11s">
+                    <span class="product-num">07</span>
+                    <div class="product-img-wrap" onclick="openLB('https://i.ibb.co/Q7yfnRfj/umidificador.jpg')">
+                        <div class="product-img-overlay"><span><i data-lucide="zoom-in" size="14"></i> Ampliar</span></div>
+                        <img src="https://i.ibb.co/Q7yfnRfj/umidificador.jpg" alt="Umidificador" loading="lazy">
+                    </div>
+                    <div class="product-body">
+                        <h3>Umidificador de Ambiente</h3>
+                        <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Umidificador de Ambiente" class="btn-wpp-sm" target="_blank"><i data-lucide="message-circle" size="14"></i> Orçar produto</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-reveal style="transition-delay:.14s">
+                    <span class="product-num">08</span>
+                    <div class="product-img-wrap" onclick="openLB('https://i.ibb.co/vxKkV0DZ/bon-poliester-aba-curva.jpg')">
+                        <div class="product-img-overlay"><span><i data-lucide="zoom-in" size="14"></i> Ampliar</span></div>
+                        <img src="https://i.ibb.co/vxKkV0DZ/bon-poliester-aba-curva.jpg" alt="Boné" loading="lazy">
+                    </div>
+                    <div class="product-body">
+                        <h3>Boné Poliéster Aba Curva</h3>
+                        <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Boné Poliéster" class="btn-wpp-sm" target="_blank"><i data-lucide="message-circle" size="14"></i> Orçar produto</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-reveal style="transition-delay:.05s">
+                    <span class="product-num">09</span>
+                    <div class="product-img-wrap" onclick="openLB('https://i.ibb.co/tTkqvXqy/chaveiro-de-metal-abridor.jpg')">
+                        <div class="product-img-overlay"><span><i data-lucide="zoom-in" size="14"></i> Ampliar</span></div>
+                        <img src="https://i.ibb.co/tTkqvXqy/chaveiro-de-metal-abridor.jpg" alt="Chaveiro" loading="lazy">
+                    </div>
+                    <div class="product-body">
+                        <h3>Chaveiro Abridor de Metal</h3>
+                        <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Chaveiro Abridor de Metal" class="btn-wpp-sm" target="_blank"><i data-lucide="message-circle" size="14"></i> Orçar produto</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-reveal style="transition-delay:.08s">
+                    <span class="product-num">10</span>
+                    <div class="product-img-wrap" onclick="openLB('https://i.ibb.co/DHYZjB20/Mochila-Saco-em-poliester.jpg')">
+                        <div class="product-img-overlay"><span><i data-lucide="zoom-in" size="14"></i> Ampliar</span></div>
+                        <img src="https://i.ibb.co/DHYZjB20/Mochila-Saco-em-poliester.jpg" alt="Mochila Saco" loading="lazy">
+                    </div>
+                    <div class="product-body">
+                        <h3>Mochila Saco Esportiva</h3>
+                        <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Mochila Saco Esportiva" class="btn-wpp-sm" target="_blank"><i data-lucide="message-circle" size="14"></i> Orçar produto</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-reveal style="transition-delay:.11s">
+                    <span class="product-num">11</span>
+                    <div class="product-img-wrap" onclick="openLB('https://i.ibb.co/vxB6td2W/Eco-Bag.jpg')">
+                        <div class="product-img-overlay"><span><i data-lucide="zoom-in" size="14"></i> Ampliar</span></div>
+                        <img src="https://i.ibb.co/vxB6td2W/Eco-Bag.jpg" alt="Eco Bag" loading="lazy">
+                    </div>
+                    <div class="product-body">
+                        <h3>Eco Bag Sustentável</h3>
+                        <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Eco Bag" class="btn-wpp-sm" target="_blank"><i data-lucide="message-circle" size="14"></i> Orçar produto</a>
+                    </div>
+                </div>
+
+                <div class="product-card" data-reveal style="transition-delay:.14s">
+                    <span class="product-num">12</span>
+                    <div class="product-img-wrap" onclick="openLB('https://i.ibb.co/fdT35048/Kit-banho-6-pe-as.jpg')">
+                        <div class="product-img-overlay"><span><i data-lucide="zoom-in" size="14"></i> Ampliar</span></div>
+                        <img src="https://i.ibb.co/fdT35048/Kit-banho-6-pe-as.jpg" alt="Kit Banho" loading="lazy">
+                    </div>
+                    <div class="product-body">
+                        <h3>Kit Banho 6 Peças</h3>
+                        <a href="https://wa.me/5511915152656?text=Gostaria de orçar: Kit Banho 6 Peças" class="btn-wpp-sm" target="_blank"><i data-lucide="message-circle" size="14"></i> Orçar produto</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================== CAMPANHAS ======================== -->
+    <section class="campanhas" id="campanhas">
+        <div class="container">
+            <div class="campanhas-header">
+                <div class="section-eyebrow" data-reveal>Conteúdo</div>
+                <h2 class="section-title" data-reveal style="transition-delay:.05s">Campanhas Especiais</h2>
+                <p class="section-desc" data-reveal style="transition-delay:.1s">Estratégias de personalização para elevar o valor da sua empresa.</p>
+            </div>
+            <div class="bento-grid">
+                <div class="bento-card" data-reveal onclick="openLB('https://i.ibb.co/2JYJnmj/3-motivos-pra-investir.jpg')">
+                    <img src="https://i.ibb.co/2JYJnmj/3-motivos-pra-investir.jpg" alt="3 Motivos para Investir" loading="lazy">
+                </div>
+                <div class="bento-card" data-reveal style="transition-delay:.06s" onclick="openLB('https://i.ibb.co/6738KB5n/Produtos-personalizados-para-o-SIPAT-na-sua-empresa.jpg')">
+                    <img src="https://i.ibb.co/6738KB5n/Produtos-personalizados-para-o-SIPAT-na-sua-empresa.jpg" alt="SIPAT" loading="lazy">
+                </div>
+                <div class="bento-card" data-reveal style="transition-delay:.09s" onclick="openLB('https://i.ibb.co/Ndmg1jff/Mito-ou-verdade.jpg')">
                     <img src="https://i.ibb.co/Ndmg1jff/Mito-ou-verdade.jpg" alt="Mito ou Verdade" loading="lazy">
                 </div>
-                <div class="campanha-card fade-up" style="transition-delay: 150ms;" onclick="openLightbox('https://i.ibb.co/jPYzV9Pt/Dia-da-mulher.jpg')">
+                <div class="bento-card" data-reveal style="transition-delay:.12s" onclick="openLB('https://i.ibb.co/jPYzV9Pt/Dia-da-mulher.jpg')">
                     <img src="https://i.ibb.co/jPYzV9Pt/Dia-da-mulher.jpg" alt="Dia da Mulher" loading="lazy">
                 </div>
-                <div class="campanha-card fade-up" style="transition-delay: 200ms;" onclick="openLightbox('https://i.ibb.co/Z6v1m9jB/Kit-volta-as-aulas.jpg')">
+                <div class="bento-card" data-reveal style="transition-delay:.15s" onclick="openLB('https://i.ibb.co/Z6v1m9jB/Kit-volta-as-aulas.jpg')">
                     <img src="https://i.ibb.co/Z6v1m9jB/Kit-volta-as-aulas.jpg" alt="Volta às Aulas" loading="lazy">
                 </div>
-                <div class="campanha-card fade-up" style="transition-delay: 250ms;" onclick="openLightbox('https://i.ibb.co/5xkvWXg9/Brindes-personalizados-falam-por-voc.jpg')">
+                <div class="bento-card" data-reveal style="transition-delay:.18s" onclick="openLB('https://i.ibb.co/5xkvWXg9/Brindes-personalizados-falam-por-voc.jpg')">
                     <img src="https://i.ibb.co/5xkvWXg9/Brindes-personalizados-falam-por-voc.jpg" alt="Brindes falam por você" loading="lazy">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Final -->
-    <section class="container" id="contato">
-        <div class="cta-section fade-up">
-            <h2>Transforme sua marca em algo inesquecível</h2>
-            <p>Garanta o melhor acabamento e impacto para sua próxima ação promocional ou kit corporativo.</p>
-
-            <a href="https://wa.me/5511915152656?text=Olá! Vim pelo site da Snow Print e gostaria de solicitar um orçamento para brindes personalizados." class="btn btn-whatsapp btn-big-wpp">
-                <i data-lucide="message-circle" size="24"></i> Solicitar orçamento agora
-            </a>
-            <div class="contact-info-footer">
-                <div class="info-footer-item"><i data-lucide="phone" size="18"></i> 11 91515-2656</div>
-                <div class="info-footer-item"><i data-lucide="instagram" size="18"></i> @snow_print_oficial</div>
-                <div class="info-footer-item"><i data-lucide="map-pin" size="18"></i> Barueri - SP</div>
+    <!-- ======================== CTA FINAL ======================== -->
+    <div class="cta-wrap" id="contato">
+        <div class="cta-box" data-reveal>
+            <div class="cta-box-grid"></div>
+            <div class="cta-content">
+                <h2>Pronto para deixar<br>sua marca <em>inesquecível?</em></h2>
+                <p>Fale com a gente agora. Orçamento rápido, atendimento humano e entrega no prazo.</p>
+                <a href="https://wa.me/5511915152656?text=Olá! Vim pelo site da Snow Print e gostaria de solicitar um orçamento para brindes personalizados." class="btn-cta-wpp" target="_blank">
+                    <i data-lucide="message-circle" size="22"></i> Solicitar orçamento pelo WhatsApp
+                </a>
+                <div class="cta-contacts">
+                    <div class="cta-contact-item"><i data-lucide="phone" size="16"></i> 11 91515-2656</div>
+                    <div class="cta-contact-item"><i data-lucide="instagram" size="16"></i> @snow_print_oficial</div>
+                    <div class="cta-contact-item"><i data-lucide="map-pin" size="16"></i> Barueri - SP</div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Footer -->
+    <!-- ======================== FOOTER ======================== -->
     <footer>
-        <div class="container footer-grid">
-            <div class="footer-col">
-                <img src="https://i.ibb.co/K8cWpfG/logo-sem-fundo-snow.png" alt="Snow Print Logo" style="height: 45px; margin-bottom: 24px; filter: brightness(0) invert(1);">
-                <p>A Snow Print é referência em Barueri para personalização de brindes corporativos e materiais promocionais de alto impacto B2B.</p>
+        <div class="footer-inner">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <img src="https://i.ibb.co/K8cWpfG/logo-sem-fundo-snow.png" alt="Snow Print" style="height:44px;filter:brightness(0) invert(1)">
+                    <p>Referência em Barueri para personalização de brindes corporativos e materiais promocionais de alto impacto B2B.</p>
+                </div>
+                <div>
+                    <div class="footer-col-title">Navegação</div>
+                    <div class="footer-links">
+                        <a href="#home">Início</a>
+                        <a href="#catalogo">Catálogo</a>
+                        <a href="#campanhas">Campanhas</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer-col-title">Soluções</div>
+                    <ul class="footer-links">
+                        <li>Gravação a Laser</li>
+                        <li>Impressão DTF UV</li>
+                        <li>Kits Corporativos</li>
+                        <li>Ações Promocionais</li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-col footer-links">
-                <h4>Navegação</h4>
-                <a href="#home">Início</a>
-                <a href="#portfolio">Catálogo</a>
-                <a href="#campanhas">Campanhas</a>
+            <div class="footer-bottom">
+                <span>&copy; 2025 Snow Print. Todos os direitos reservados.</span>
+                <span>Barueri - SP</span>
             </div>
-            <div class="footer-col">
-                <h4>Soluções</h4>
-                <ul class="footer-links">
-                    <li>Gravação a Laser</li>
-                    <li>Impressão DTF UV</li>
-                    <li>Kits Corporativos</li>
-                    <li>Ações Promocionais</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            &copy; 2025 Snow Print - Brindes Personalizados. Todos os direitos reservados.
         </div>
     </footer>
 
-    <!-- Lightbox Modal -->
-    <div id="lightbox" class="modal" onclick="closeLightbox()">
-        <span class="close-modal" onclick="closeLightbox()">&times;</span>
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <img id="modalImg" src="" alt="">
+    <!-- LIGHTBOX -->
+    <div id="lightbox" onclick="closeLB()">
+        <div class="lb-content" onclick="event.stopPropagation()">
+            <div class="lb-close" onclick="closeLB()">&times;</div>
+            <img id="lbImg" src="" alt="">
         </div>
     </div>
 
     <script>
-        // Inicializar ícones
         lucide.createIcons();
 
-        // Menu Mobile
-        function toggleMenu() {
-            document.getElementById('mobileMenu').classList.add('active');
-            document.getElementById('mobileOverlay').classList.add('active');
+        /* Drawer */
+        function openDrawer() {
+            document.getElementById('mobileDrawer').classList.add('open');
+            document.getElementById('mobileOverlay').classList.add('open');
             document.body.style.overflow = 'hidden';
         }
-        function closeMenu() {
-            document.getElementById('mobileMenu').classList.remove('active');
-            document.getElementById('mobileOverlay').classList.remove('active');
-            document.body.style.overflow = 'auto';
+        function closeDrawer() {
+            document.getElementById('mobileDrawer').classList.remove('open');
+            document.getElementById('mobileOverlay').classList.remove('open');
+            document.body.style.overflow = '';
         }
 
-        // Lightbox
-        function openLightbox(src) {
-            const modal = document.getElementById('lightbox');
-            const modalImg = document.getElementById('modalImg');
-            modal.style.display = 'flex';
-            modalImg.src = src;
+        /* Lightbox */
+        function openLB(src) {
+            document.getElementById('lbImg').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
-        function closeLightbox() {
+        function closeLB() {
             document.getElementById('lightbox').style.display = 'none';
-            document.body.style.overflow = 'auto';
+            document.body.style.overflow = '';
         }
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeLightbox();
-        });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
 
-        // Header scroll
+        /* Header scroll */
         window.addEventListener('scroll', () => {
-            document.getElementById('header').classList.toggle('scrolled', window.scrollY > 50);
-        });
+            document.getElementById('header').classList.toggle('scrolled', scrollY > 60);
+        }, { passive: true });
 
-        // Scroll reveal (Intersection Observer)
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+        /* Scroll reveal */
+        const ro = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('is-visible'); });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('[data-reveal]').forEach(el => ro.observe(el));
+
+        /* Cursor glow */
+        const glow = document.getElementById('cursorGlow');
+        window.addEventListener('mousemove', e => {
+            glow.style.left = e.clientX + 'px';
+            glow.style.top = e.clientY + 'px';
+        }, { passive: true });
+
+        /* Stagger hero on load */
+        window.addEventListener('load', () => {
+            document.querySelectorAll('.hero [data-reveal]').forEach(el => {
+                setTimeout(() => el.classList.add('is-visible'), 100);
             });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+        });
     </script>
 </body>
 </html>
